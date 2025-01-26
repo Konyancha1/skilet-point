@@ -1,0 +1,19 @@
+[
+    {
+      "id": "1",
+      "title": "Advanced React Training",
+      "description": "Learn advanced concepts in React.",
+      "date": "2025-02-15",
+      "location": "Nairobi, Kenya",
+      "price": "100 USD"
+    },
+    {
+      "id": "2",
+      "title": "UI/UX Design Basics",
+      "description": "An introduction to modern UI/UX design.",
+      "date": "2025-03-10",
+      "location": "Mombasa, Kenya",
+      "price": "75 USD"
+    }
+  ]
+  
