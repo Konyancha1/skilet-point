@@ -4,7 +4,7 @@ import Card from "../components/card";
 import image from '../images/dylan-gillis-KdeqA3aTnBY-unsplash.jpg';
 import bgImage from '../images/medium-shot-people-learning-together-office.jpg';
 import { FaFacebookF, FaLinkedinIn, FaInstagram } from "react-icons/fa";
-import { BsImageAlt, BsTwitterX } from "react-icons/bs";
+import { BsTwitterX } from "react-icons/bs";
 
 type TrainingData = {
   image: string;
