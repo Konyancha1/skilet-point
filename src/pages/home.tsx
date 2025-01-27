@@ -28,12 +28,6 @@ const HomePage = () => {
   ];
 
   const [menuOpen, setMenuOpen] = useState(false);
-  
-  const services = [
-    { title: "Customer Service Excellence", route: "customer-service-excellence" },
-    { title: "Emotional Intelligence in Customer Interactions", route: "emotional-intelligence-customer-interactions" },
-    { title: "Advanced Customer Support Techniques", route: "advanced-customer-support-techniques" },
-  ];
 
   const navLinks = [
     { name: "Home", route: "/" },
@@ -68,18 +62,6 @@ const HomePage = () => {
             </Link>
           </li>
         ))}
-        <li className="space-y-6">
-          {services.map((service, index) => (
-            <Link
-              key={index}
-              to={`/services/${service.route}`}
-              onClick={() => setMenuOpen(false)}
-              className="block hover:underline"
-            >
-              {service.title}
-            </Link>
-          ))}
-        </li>
       </ul>
     </nav>
   );
