@@ -1,29 +1,48 @@
 @import "tailwindcss";
 
-:root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+html, body {
+  @apply bg-white text-gray-900;
   line-height: 1.5;
   font-weight: 400;
+  scroll-behavior: smooth;
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+.navbar-menu {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.8); 
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+  padding: 16px;
+  transform: translateX(100%);
+  opacity: 0; 
+  transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+  z-index: 40;
+}
+
+.navbar-menu.open {
+  transform: translateX(0);
+  opacity: 1; 
+}
+
+.navbar-menu .background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  transition: background-color 0.5s ease-in-out;
+  z-index: -1; 
+}
+
+.navbar-menu.open .background {
+  background-color: rgba(0, 0, 0, 0.8);
 }
