@@ -3,8 +3,8 @@ import image from '../images/dylan-gillis-KdeqA3aTnBY-unsplash.jpg'
 
 const About = () => {
   return (
-    <div className="px-8 md:px-24">
-      <section className="mt-6 md:mt-12">
+    <div className="mt-6 md:mt-12  px-8 md:px-24">
+      <section className="mb-6">
         <img
           src={image}
           alt="About Skilet"
