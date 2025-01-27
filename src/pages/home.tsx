@@ -4,7 +4,7 @@ import Card from "../components/card";
 import image from '../images/dylan-gillis-KdeqA3aTnBY-unsplash.jpg';
 import bgImage from '../images/medium-shot-people-learning-together-office.jpg';
 import { FaFacebookF, FaLinkedinIn, FaInstagram } from "react-icons/fa";
-import { BsTwitterX } from "react-icons/bs";
+import { BsImageAlt, BsTwitterX } from "react-icons/bs";
 
 type TrainingData = {
   image: string;
@@ -91,7 +91,15 @@ const HomePage = () => {
         style={{
           backgroundImage: `url(${bgImage})`,
         }}
+
       >
+        <img
+          src={bgImage}
+          alt="Background"
+          className="hidden"
+          loading="lazy"
+        />
+
         <div className="absolute inset-0 bg-black/60"></div> 
         
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white text-5xl font-semibold">
