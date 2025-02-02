@@ -1,20 +1,24 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import logo from'../images/logo.png';
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   const navLinks = [
     { name: "Home", route: "/" },
-    { name: "About", route: "/about" },
+    { name: "About Us", route: "/about" },
     { name: "Contact Us", route: "/contact-us" },
   ];
 
   return (
-    <header className="absolute top-0 left-0 w-full flex items-center justify-between px-4 py-4 md:px-6 z-50">
+    <header className="relative top-0 left-0 w-full flex items-center justify-between p-6 md:px-16 lg:px-64 md:py-16 z-50">
       <div className="text-xl font-bold text-black font-inter p-4">
         <Link to="/" onClick={() => setMenuOpen(false)}>
-          Logo
+          <img 
+            src={logo}
+            className="h-16 md:h-24 w-auto"
+          />
         </Link>
       </div>
       <button
@@ -38,7 +42,11 @@ const Navbar = () => {
         </svg>
       </button>
 
-      <nav className={`navbar-menu ${menuOpen ? "open" : ""}`}>
+      <nav
+        className={`fixed inset-0 bg-black/70 backdrop-blur-md flex flex-col items-center justify-center text-white z-20 ${
+          menuOpen ? "opacity-100 visible" : "opacity-0 invisible"
+        }`}
+      >
         <div className="background"></div>
         <button
           onClick={() => setMenuOpen(false)}
@@ -56,7 +64,7 @@ const Navbar = () => {
             <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
           </svg>
         </button>
-        <ul className="space-y-6 text-lg md:text-xl font-medium font-inter text-right">
+        <ul className="text-lg space-y-6">
           {navLinks.map((link, index) => (
             <li key={index}>
               <Link to={link.route} onClick={() => setMenuOpen(false)} className="hover:underline">
