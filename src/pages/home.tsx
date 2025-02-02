@@ -43,7 +43,7 @@ const HomePage = () => {
         <div className="absolute inset-0 bg-black/60"></div>
         <img
           src={logo}
-          className="h-[13%] w-auto z-50"
+          className="h-[15%] w-auto z-50"
         />
         
         <button
@@ -94,7 +94,7 @@ const HomePage = () => {
           <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-8">
             Equip Your Workforce With The Skills For Success
           </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 place-items-center">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 place-items-center p-10">
             {trainingData.map((training, index) => (
               <Card key={index} image={training.image} title={training.title} />
             ))}

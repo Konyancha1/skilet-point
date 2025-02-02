@@ -12,12 +12,12 @@ const Navbar = () => {
   ];
 
   return (
-    <header className="relative top-0 left-0 w-full flex items-center justify-between p-6 md:px-16 lg:px-64 md:py-16 z-50">
+    <header className="relative top-0 left-0 w-full flex items-center justify-between p-6 md:px-[10%] z-50">
       <div className="text-xl font-bold text-black font-inter p-4">
         <Link to="/" onClick={() => setMenuOpen(false)}>
           <img 
             src={logo}
-            className="h-16 md:h-24 w-auto"
+            className="h-16 md:h-20 w-auto"
           />
         </Link>
       </div>

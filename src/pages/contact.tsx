@@ -1,6 +1,6 @@
 export default function ContactUs() {
   return (
-    <div className="flex items-center justify-center mt-24">
+    <div className="flex items-center justify-center mt-[5%]">
       <div className="w-full max-w-md p-6 md:p-8">
         <div className="border-t-2 border-black mb-8"></div>
 
