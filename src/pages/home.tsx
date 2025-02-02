@@ -43,7 +43,7 @@ const HomePage = () => {
         <div className="absolute inset-0 bg-black/60"></div>
         <img
           src={logo}
-          className="h-[15%] w-auto z-50"
+          className="h-[12%] w-auto z-50"
         />
         
         <button
