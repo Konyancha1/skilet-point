@@ -1,19 +1,27 @@
 import { FaLightbulb, FaBullseye } from "react-icons/fa";
+import { useState } from "react";
+import Skeleton from "@mui/material/Skeleton";
 import image from "../images/about-skilet.jpeg";
+import image2 from "../images/about image.jpeg";
 
 const About = () => {
+  const [imageLoaded1, setImageLoaded1] = useState(false);
+  const [imageLoaded2, setImageLoaded2] = useState(false);
+
   return (
     <div className="px-6 md:px-12 lg:px-36">
       <section className="mb-6">
+        {!imageLoaded1 && <Skeleton variant="rectangular" width="100%" height={320} />}
         <img
           src={image}
           alt="About Skilet"
-          className="w-full h-80 md:h-112 object-cover"
+          className={`w-full h-80 md:h-112 object-cover transition-opacity duration-500 ${imageLoaded1 ? "opacity-100" : "opacity-0"}`}
           loading="lazy"
+          onLoad={() => setImageLoaded1(true)}
         />
       </section>
 
-      <section className="text-justify text-black leading-relaxed">
+      <section className="text-justify text-black leading-relaxed mb-6">
         <p className="text-lg mb-6">
           At SkiletPoint, our mission is to empower individuals and organizations
           with the skills and knowledge needed to excel in today’s fast-evolving world.
@@ -37,6 +45,17 @@ const About = () => {
           service excellence or sharpening emotional intelligence, SkiletPoint prepares
           its learners for success from day one.
         </p>
+      </section>
+
+      <section className="mb-6">
+        {!imageLoaded2 && <Skeleton variant="rectangular" width="100%" height={320} />}
+        <img
+          src={image2}
+          alt="About Skilet"
+          className={`w-full h-80 md:h-112 object-cover transition-opacity duration-500 ${imageLoaded2 ? "opacity-100" : "opacity-0"}`}
+          loading="lazy"
+          onLoad={() => setImageLoaded2(true)}
+        />
       </section>
 
       <section className="text-black mb-6">

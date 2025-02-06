@@ -1,11 +1,12 @@
 import { FaFacebookF, FaLinkedinIn, FaInstagram } from "react-icons/fa";
 import { BsTwitterX } from "react-icons/bs";
+import logo from '../images/JM logo.png';
 
 const Footer = () => {
   return (
     <footer className="w-full text-black py-6">
       <div className="text-center font-inter">
-      <div className="flex justify-center items-center gap-4 mb-4">
+        <div className="flex justify-center items-center gap-4 mb-4">
           <a
             href="https://facebook.com"
             target="_blank"
@@ -43,6 +44,9 @@ const Footer = () => {
           &copy; {new Date().getFullYear()} Skilet Point. All rights reserved.
         </p>
         <p className="text-sm md:text-base mt-1">Nairobi, Kenya</p>
+      </div>
+      <div className="flex justify-center mt-2">
+        <img src={logo} className="h-[50px] w-auto z-10" />
       </div>
     </footer>
   );
