@@ -36,6 +36,31 @@ const Calendar: React.FC<CalendarProps> = ({ trainings, onDateSelect }) => {
     }
   };
 
+  const renderCustomDay = (dayProps: any) => {
+    const date = dayProps.day;
+    const isTraining = isTrainingDay(date);
+    const isSelected = selectedDate && date.isSame(selectedDate, "day");
+
+    return (
+      <PickersDay
+        {...dayProps}
+        sx={{
+          backgroundColor: isSelected
+            ? "#007BFF" // Blue if selected
+            : isTraining
+            ? "#FFA500" // Orange if training day
+            : "inherit",
+          color: isTraining || isSelected ? "white" : "inherit",
+          fontWeight: isTraining ? "bold" : "normal",
+          borderRadius: "50%",
+          "&:hover": {
+            backgroundColor: isTraining ? "#FF8C00" : "#0056b3",
+          },
+        }}
+      />
+    );
+  };
+
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
       <Card className="shadow-md p-4 rounded-lg border max-w-md w-full mx-auto bg-white">
@@ -45,6 +70,7 @@ const Calendar: React.FC<CalendarProps> = ({ trainings, onDateSelect }) => {
               value={selectedDate}
               onChange={handleDayClick}
               slotProps={{ textField: { fullWidth: true } }}
+              slots={{ day: renderCustomDay }} 
             />
           ) : (
             <div className="overflow-auto max-h-[400px] w-full">
@@ -52,31 +78,7 @@ const Calendar: React.FC<CalendarProps> = ({ trainings, onDateSelect }) => {
                 displayStaticWrapperAs="desktop"
                 value={selectedDate}
                 onChange={handleDayClick}
-                slots={{
-                  day: (dayProps) => {
-                    const isTraining = isTrainingDay(dayProps.day);
-                    const isSelected = selectedDate && dayProps.day.isSame(selectedDate, "day");
-
-                    return (
-                      <PickersDay
-                        {...dayProps}
-                        sx={{
-                          backgroundColor: isSelected
-                            ? "#007BFF"
-                            : isTraining
-                            ? "#FFA500"
-                            : "inherit",
-                          color: isTraining || isSelected ? "white" : "inherit",
-                          fontWeight: isTraining ? "bold" : "normal",
-                          borderRadius: "50%",
-                          "&:hover": {
-                            backgroundColor: isTraining ? "#FF8C00" : "#0056b3",
-                          },
-                        }}
-                      />
-                    );
-                  },
-                }}
+                slots={{ day: renderCustomDay }}
               />
             </div>
           )}
