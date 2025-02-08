@@ -2,7 +2,8 @@
 
 import * as React from "react";
 import dayjs, { Dayjs } from "dayjs";
-import { LocalizationProvider, StaticDatePicker } from "@mui/x-date-pickers";
+import { useMediaQuery } from "@mui/material";
+import { LocalizationProvider, StaticDatePicker, MobileDatePicker } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { Card, CardContent } from "@mui/material";
 import { cn } from "../../lib/utils";
@@ -18,23 +19,37 @@ export function Calendar({ value, onChange, className }: CalendarProps) {
     value || dayjs()
   );
 
+  // Detect screen size for responsiveness
+  const isSmallScreen = useMediaQuery("(max-width: 640px)"); // Tailwind "sm" breakpoint (640px)
+
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
       <Card
         className={cn(
-          "shadow-md p-4 rounded-lg border max-w-md mx-auto bg-white",
+          "shadow-md p-4 rounded-lg border mx-auto bg-white w-full max-w-md sm:max-w-lg",
           className
         )}
       >
-        <CardContent>
-          <StaticDatePicker
-            displayStaticWrapperAs="desktop"
-            value={selectedDate}
-            onChange={(newValue) => {
-              setSelectedDate(newValue);
-              if (onChange) onChange(newValue);
-            }}
-          />
+        <CardContent className="flex justify-center">
+          {isSmallScreen ? (
+            <MobileDatePicker
+              value={selectedDate}
+              onChange={(newValue) => {
+                setSelectedDate(newValue);
+                if (onChange) onChange(newValue);
+              }}
+              slotProps={{ textField: { fullWidth: true } }}
+            />
+          ) : (
+            <StaticDatePicker
+              displayStaticWrapperAs="desktop"
+              value={selectedDate}
+              onChange={(newValue) => {
+                setSelectedDate(newValue);
+                if (onChange) onChange(newValue);
+              }}
+            />
+          )}
         </CardContent>
       </Card>
     </LocalizationProvider>

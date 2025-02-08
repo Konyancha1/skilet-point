@@ -82,7 +82,7 @@ const HomePage = () => {
           <h1 className="text-4xl md:text-6xl font-bold mb-4">
             Transform Your Customer Experience
           </h1>
-          <p className="text-lg md:text-2xl mb-8">
+          <p className="text-lg md:text-2xl mb-8 px-1">
             Empower your team with world-class training to deliver exceptional service, build lasting relationships, and drive business growth.
           </p>
           <button
