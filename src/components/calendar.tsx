@@ -2,7 +2,8 @@
 
 import React, { useState } from "react";
 import dayjs, { Dayjs } from "dayjs";
-import { LocalizationProvider, StaticDatePicker, PickersDay } from "@mui/x-date-pickers";
+import { useMediaQuery } from "@mui/material";
+import { LocalizationProvider, StaticDatePicker, MobileDatePicker, PickersDay } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { Training } from "../type";
 import { Card, CardContent } from "@mui/material";
@@ -14,6 +15,7 @@ interface CalendarProps {
 
 const Calendar: React.FC<CalendarProps> = ({ trainings, onDateSelect }) => {
   const [selectedDate, setSelectedDate] = useState<Dayjs | null>(null);
+  const isSmallScreen = useMediaQuery("(max-width: 640px)"); // Detect small screens
 
   const trainingDates = trainings.map((t) => dayjs(t.date));
 
@@ -36,38 +38,48 @@ const Calendar: React.FC<CalendarProps> = ({ trainings, onDateSelect }) => {
 
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
-      <Card className="shadow-md p-4 rounded-lg border max-w-md mx-auto bg-white">
-        <CardContent>
-          <StaticDatePicker
-            displayStaticWrapperAs="desktop"
-            value={selectedDate}
-            onChange={handleDayClick}
-            slots={{
-              day: (dayProps) => {
-                const isTraining = isTrainingDay(dayProps.day);
-                const isSelected = selectedDate && dayProps.day.isSame(selectedDate, "day");
+      <Card className="shadow-md p-4 rounded-lg border max-w-md w-full mx-auto bg-white">
+        <CardContent className="flex justify-center">
+          {isSmallScreen ? (
+            <MobileDatePicker
+              value={selectedDate}
+              onChange={handleDayClick}
+              slotProps={{ textField: { fullWidth: true } }}
+            />
+          ) : (
+            <div className="overflow-auto max-h-[400px] w-full">
+              <StaticDatePicker
+                displayStaticWrapperAs="desktop"
+                value={selectedDate}
+                onChange={handleDayClick}
+                slots={{
+                  day: (dayProps) => {
+                    const isTraining = isTrainingDay(dayProps.day);
+                    const isSelected = selectedDate && dayProps.day.isSame(selectedDate, "day");
 
-                return (
-                  <PickersDay
-                    {...dayProps}
-                    sx={{
-                      backgroundColor: isSelected
-                        ? "#007BFF" 
-                        : isTraining
-                        ? "#FFA500"
-                        : "inherit",
-                      color: isTraining || isSelected ? "white" : "inherit",
-                      fontWeight: isTraining ? "bold" : "normal",
-                      borderRadius: "50%",
-                      "&:hover": {
-                        backgroundColor: isTraining ? "#FF8C00" : "#0056b3",
-                      },
-                    }}
-                  />
-                );
-              },
-            }}
-          />
+                    return (
+                      <PickersDay
+                        {...dayProps}
+                        sx={{
+                          backgroundColor: isSelected
+                            ? "#007BFF"
+                            : isTraining
+                            ? "#FFA500"
+                            : "inherit",
+                          color: isTraining || isSelected ? "white" : "inherit",
+                          fontWeight: isTraining ? "bold" : "normal",
+                          borderRadius: "50%",
+                          "&:hover": {
+                            backgroundColor: isTraining ? "#FF8C00" : "#0056b3",
+                          },
+                        }}
+                      />
+                    );
+                  },
+                }}
+              />
+            </div>
+          )}
         </CardContent>
       </Card>
     </LocalizationProvider>

@@ -20,8 +20,8 @@ export function Calendar({ value, onChange, className }: CalendarProps) {
   );
 
   // Detect screen size for responsiveness
-  const isSmallScreen = useMediaQuery("(max-width: 640px)"); // Tailwind "sm" breakpoint (640px)
-
+  const isSmallScreen = useMediaQuery("(max-width: 640px)");
+  
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
       <Card
