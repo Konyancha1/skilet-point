@@ -21,7 +21,7 @@ const About = () => {
         />
       </section>
 
-      <section className="text-justify text-black leading-relaxed mb-6">
+      <section className="text-left md:text-justify text-black leading-relaxed mb-6">
         <p className="text-lg mb-6">
           At SkiletPoint, our mission is to empower individuals and organizations
           with the skills and knowledge needed to excel in today’s fast-evolving world.
