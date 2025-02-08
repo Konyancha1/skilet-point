@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import logo from'../images/logo.png';
+import logo from'../images/logo1.png';
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -17,7 +17,7 @@ const Navbar = () => {
         <Link to="/" onClick={() => setMenuOpen(false)}>
           <img 
             src={logo}
-            className="h-16 md:h-20 w-auto"
+            className="h-8 w-auto"
           />
         </Link>
       </div>

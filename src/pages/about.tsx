@@ -9,7 +9,7 @@ const About = () => {
   const [imageLoaded2, setImageLoaded2] = useState(false);
 
   return (
-    <div className="px-6 md:px-12 lg:px-36">
+    <div>
       <section className="mb-6">
         {!imageLoaded1 && <Skeleton variant="rectangular" width="100%" height={320} />}
         <img

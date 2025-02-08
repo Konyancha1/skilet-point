@@ -1,16 +1,26 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom"; 
 import Skeleton from "@mui/material/Skeleton";
 
 interface CardProps {
   image: string;
   title: string;
+  link: string; // Add link prop
 }
 
-const Card = ({ image, title }: CardProps) => {
+const Card = ({ image, title, link }: CardProps) => {
   const [imageLoaded, setImageLoaded] = useState(false);
+  const navigate = useNavigate(); 
+
+  const handleClick = () => {
+    navigate(link); 
+  };
 
   return (
-    <div className="bg-white shadow-lg overflow-hidden transform hover:scale-105 transition-transform w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg rounded-lg">
+    <div
+      className="bg-white shadow-lg overflow-hidden transform hover:scale-105 transition-transform w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg rounded-lg cursor-pointer"
+      onClick={handleClick} 
+    >
       {!imageLoaded && (
         <div className="animate-pulse">
           <Skeleton variant="rectangular" width="100%" height={320} />
@@ -30,7 +40,7 @@ const Card = ({ image, title }: CardProps) => {
             e.currentTarget.style.opacity = "1";
           }}
         />
-        <div className="absolute bottom-0 left-0 right-0 py-12 px-6 bg-gradient-to-t from-black to-transparent">
+        <div className="absolute bottom-0 left-0 right-0 py-12 bg-gradient-to-t from-black to-transparent">
           <h3 className="text-lg sm:text-xl font-semibold text-white">{title}</h3>
         </div>
       </div>

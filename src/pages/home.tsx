@@ -17,21 +17,22 @@ import logo from '../images/logo1.png';
 type TrainingData = {
   image: string;
   title: string;
+  route: string;
 };
 
 const HomePage = () => {
   const trainingData: TrainingData[] = [
-    { image: image2, title: "Communication & Presentation Skills" },
-    { image: image3, title: "Customer Experience Trainings" },
-    { image: image1, title: "Leadership & Management" },
-    { image: image4, title: "Personal Development Courses" },
-    { image: image5, title: "HR" },
-    { image: image6, title: "Professional Certification Courses" },
-    { image: image7, title: "John Maxwell Trainings" },
+    { image: image2, title: "Communication & Presentation Skills", route: "communication-skills"},
+    { image: image3, title: "Customer Experience Trainings", route: "customer-experience-trainings"},
+    { image: image1, title: "Leadership & Management", route: "leadership-and-management"},
+    { image: image4, title: "Personal Development Courses", route: "personal-development-courses"},
+    { image: image5, title: "HR", route: "hr"},
+    { image: image6, title: "Professional Certification Courses", route: "professional-certificate-courses"},
+    { image: image7, title: "John Maxwell Trainings", route: "john-maxwell-trainings"},
   ];
 
   const [menuOpen, setMenuOpen] = useState(false);
-  const [heroLoaded, setHeroLoaded] = useState(false); // State for hero image loading
+  const [heroLoaded, setHeroLoaded] = useState(false);
   const navLinks = [
     { name: "Home", route: "/" },
     { name: "About Us", route: "/about" },
@@ -40,9 +41,7 @@ const HomePage = () => {
 
   return (
     <div className="font-inter">
-      {/* Hero Section */}
       <section className="relative w-full h-screen flex flex-col justify-center items-center text-white text-center overflow-hidden">
-        {/* Skeleton Loader for Hero Image */}
         {!heroLoaded && (
           <div className="absolute inset-0 bg-gray-800 animate-pulse"></div>
         )}
@@ -142,9 +141,9 @@ const HomePage = () => {
           <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-8">
             Equip Your Workforce With The Skills For Success
           </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 place-items-center p-10">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 place-items-center">
             {trainingData.map((training, index) => (
-              <Card key={index} image={training.image} title={training.title} />
+              <Card key={index} image={training.image} title={training.title} link={training.route}/>
             ))}
           </div>
         </div>
