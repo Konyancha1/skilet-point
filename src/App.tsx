@@ -12,35 +12,38 @@ import LeadershipManagementIndex from "./pages/services/leadershipManagement/lmI
 import PersonalDevelopmentIndex from "./pages/services/personalDevelopment/pdIndex";
 import ProfessionalCertificationIndex from "./pages/services/professionalCertificationCourses/pcIndex";
 import JohnMaxwellTrainings from "./pages/services/johnMaxwellTrainings/jmIndex";
+import { SnackbarProvider } from "notistack";
 
 const queryClient = new QueryClient();
 
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
-      <Router>
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route
-            path="*"
-            element={
-              <Layout>
-                <Routes>
-                  <Route path="/about" element={<About />} />
-                  <Route path="/contact-us" element={<ContactUs />} />
-                  <Route path="/communication-skills" element={<Index />} />
-                  <Route path="/hr" element={<HrIndex />} />
-                  <Route path="/customer-experience-trainings" element={<CustomerExperienceIndex />} />
-                  <Route path="/leadership-and-management" element={<LeadershipManagementIndex />} />
-                  <Route path="/personal-development-courses" element={<PersonalDevelopmentIndex />} />
-                  <Route path="/professional-certificate-courses" element={<ProfessionalCertificationIndex />} />
-                  <Route path='/john-maxwell-trainings' element={<JohnMaxwellTrainings />} />
-                </Routes>
-              </Layout>
-            }
-          />
-        </Routes>
-      </Router>
+      <SnackbarProvider maxSnack={3}>
+        <Router>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route
+              path="*"
+              element={
+                <Layout>
+                  <Routes>
+                    <Route path="/about" element={<About />} />
+                    <Route path="/contact-us" element={<ContactUs />} />
+                    <Route path="/communication-skills" element={<Index />} />
+                    <Route path="/hr" element={<HrIndex />} />
+                    <Route path="/customer-experience-trainings" element={<CustomerExperienceIndex />} />
+                    <Route path="/leadership-and-management" element={<LeadershipManagementIndex />} />
+                    <Route path="/personal-development-courses" element={<PersonalDevelopmentIndex />} />
+                    <Route path="/professional-certificate-courses" element={<ProfessionalCertificationIndex />} />
+                    <Route path='/john-maxwell-trainings' element={<JohnMaxwellTrainings />} />
+                  </Routes>
+                </Layout>
+              }
+            />
+          </Routes>
+        </Router>
+      </SnackbarProvider>
     </QueryClientProvider>
   );
 }

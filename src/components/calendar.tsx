@@ -46,9 +46,9 @@ const Calendar: React.FC<CalendarProps> = ({ trainings, onDateSelect }) => {
         {...dayProps}
         sx={{
           backgroundColor: isSelected
-            ? "#007BFF" // Blue if selected
+            ? "#007BFF"
             : isTraining
-            ? "#FFA500" // Orange if training day
+            ? "#FFA500" 
             : "inherit",
           color: isTraining || isSelected ? "white" : "inherit",
           fontWeight: isTraining ? "bold" : "normal",
