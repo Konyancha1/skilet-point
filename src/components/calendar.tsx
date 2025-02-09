@@ -47,7 +47,6 @@ const Calendar: React.FC<CalendarProps> = ({ trainings, onDateSelect }) => {
     }
   }, [selectedDate, trainings, onDateSelect]); 
 
-  // Custom day rendering with correct props
   const renderCustomDay = useCallback((props: PickersDayProps<Dayjs>) => {
     const { day, selected, ...other } = props;
     const isTraining = isTrainingDay(day);
