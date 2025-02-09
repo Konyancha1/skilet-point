@@ -24,10 +24,13 @@ const Calendar: React.FC<CalendarProps> = ({ trainings, onDateSelect }) => {
     );
   };
 
+  const [isDatePickerOpen, setIsDatePickerOpen] = useState(false);
+
   const handleDayClick = (date: Dayjs | null) => {
     if (!date) return;
-    console.log("Selected Date:", date.format("YYYY-MM-DD")); // Debugging line
     setSelectedDate(date);
+    setIsDatePickerOpen(false);
+
     const training = trainings.find(
       (t) => dayjs(t.date).format("YYYY-MM-DD") === date.format("YYYY-MM-DD")
     );
@@ -68,9 +71,13 @@ const Calendar: React.FC<CalendarProps> = ({ trainings, onDateSelect }) => {
             <MobileDatePicker
               value={selectedDate}
               onChange={handleDayClick}
+              open={isDatePickerOpen}
+              onClose={() => setIsDatePickerOpen(false)} 
+              onOpen={() => setIsDatePickerOpen(true)}
               slotProps={{ textField: { fullWidth: true } }}
               slots={{ day: renderCustomDay }}
             />
+          
           ) : (
             <div className="overflow-auto max-h-[400px] w-full">
               <StaticDatePicker

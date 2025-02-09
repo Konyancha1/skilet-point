@@ -85,7 +85,12 @@ const TrainingModal: React.FC<TrainingModalProps> = ({ training, isOpen, onClose
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="sm:max-w-[425px] bg-white/95 backdrop-blur-sm">
+      <DialogContent 
+        aria-describedby="dialog-description"
+        className="sm:max-w-[425px] bg-white/95 backdrop-blur-sm overflow-y-auto"
+        onOpenAutoFocus={(event) => event.preventDefault()} 
+        onCloseAutoFocus={(event) => event.preventDefault()}
+      >
         <DialogHeader>
           <DialogTitle className="text-xl font-semibold text-gray-900">
             {training.topic}
