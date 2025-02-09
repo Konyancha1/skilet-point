@@ -1,6 +1,5 @@
 "use client";
-
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, useMemo } from "react";
 import dayjs, { Dayjs } from "dayjs";
 import { useMediaQuery } from "@mui/material";
 import { 
@@ -21,18 +20,16 @@ interface CalendarProps {
 
 const Calendar: React.FC<CalendarProps> = ({ trainings, onDateSelect }) => {
   const [selectedDate, setSelectedDate] = useState<Dayjs | null>(null);
-  const isSmallScreen = useMediaQuery("(max-width: 640px)"); // Detect small screens
+  const isSmallScreen = useMediaQuery("(max-width: 640px)");
 
-  const trainingDates = trainings.map((t) => dayjs(t.date));
+  const trainingDates = useMemo(() => trainings.map((t) => dayjs(t.date)), [trainings]);
 
-  // Function to check if a date has a training
-  const isTrainingDay = (date: Dayjs) => {
+  const isTrainingDay = useCallback((date: Dayjs) => {
     return trainingDates.some(
       (trainingDate) => trainingDate.format("YYYY-MM-DD") === date.format("YYYY-MM-DD")
     );
-  };
+  }, [trainingDates]);
 
-  // Memoized function to handle day selection
   const handleDayClick = useCallback((date: Dayjs | null) => {
     if (!date || (selectedDate && selectedDate.isSame(date, "day"))) return;
 
@@ -41,16 +38,15 @@ const Calendar: React.FC<CalendarProps> = ({ trainings, onDateSelect }) => {
     const training = trainings.find(
       (t) => dayjs(t.date).format("YYYY-MM-DD") === date.format("YYYY-MM-DD")
     );
-
     if (training) {
       onDateSelect(training);
     }
-  }, [selectedDate, trainings, onDateSelect]); 
+  }, [selectedDate, trainings, onDateSelect]);
 
   const renderCustomDay = useCallback((props: PickersDayProps<Dayjs>) => {
-    const { day, selected, ...other } = props;
+    const { day, ...other } = props;
     const isTraining = isTrainingDay(day);
-    const isSelected = selectedDate ? day.isSame(selectedDate, "day") : undefined;
+    const isSelected = selectedDate ? day.isSame(selectedDate, "day") : false;
 
     return (
       <PickersDay
@@ -58,11 +54,7 @@ const Calendar: React.FC<CalendarProps> = ({ trainings, onDateSelect }) => {
         day={day}
         selected={isSelected}
         sx={{
-          backgroundColor: isSelected
-            ? "#007BFF"
-            : isTraining
-            ? "#FFA500"
-            : "inherit",
+          backgroundColor: isSelected ? "#007BFF" : isTraining ? "#FFA500" : "inherit",
           color: isTraining || isSelected ? "white" : "inherit",
           fontWeight: isTraining ? "bold" : "normal",
           borderRadius: "50%",
@@ -72,13 +64,13 @@ const Calendar: React.FC<CalendarProps> = ({ trainings, onDateSelect }) => {
         }}
       />
     );
-  }, [selectedDate]);
+  }, [selectedDate, trainingDates]);
 
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
       <Card className="shadow-md p-4 rounded-lg border max-w-md w-full mx-auto bg-white">
         <CardContent className="flex justify-center">
-          {isSmallScreen ? (
+          <div className={isSmallScreen ? "block" : "hidden"}>
             <MobileDatePicker
               value={selectedDate}
               onChange={(newDate) => {
@@ -89,7 +81,8 @@ const Calendar: React.FC<CalendarProps> = ({ trainings, onDateSelect }) => {
               slotProps={{ textField: { fullWidth: true } }}
               slots={{ day: renderCustomDay }}
             />
-          ) : (
+          </div>
+          <div className={isSmallScreen ? "hidden" : "block"}>
             <div className="overflow-auto max-h-[400px] w-full">
               <StaticDatePicker
                 displayStaticWrapperAs="desktop"
@@ -98,11 +91,11 @@ const Calendar: React.FC<CalendarProps> = ({ trainings, onDateSelect }) => {
                 slots={{ day: renderCustomDay }}
               />
             </div>
-          )}
+          </div>
         </CardContent>
       </Card>
     </LocalizationProvider>
   );
 };
 
-export default Calendar;
+export default React.memo(Calendar);
