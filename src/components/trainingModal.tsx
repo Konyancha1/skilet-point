@@ -42,7 +42,7 @@ const TrainingModal: React.FC<TrainingModalProps> = ({ training, isOpen, onClose
             <p className="text-sm text-gray-600">{training.description}</p>
             <div className="flex justify-between text-sm text-gray-600">
               <span>Limited Spots Available</span>
-              <span>Cost: KSH{training.cost}</span>
+              <span>March Discount: KSH{training.cost}</span>
             </div>
           </div>
 
