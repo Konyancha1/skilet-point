@@ -149,13 +149,13 @@ const HomePage = () => {
         </div>
       </section>
 
-      <div className="fixed bottom-4 left-1/2 transform -translate-x-1/2 bg-red-600 text-white px-6 py-3 rounded-lg shadow-lg flex items-center space-x-4 z-50">
-        <div className="text-sm font-semibold">
+      <div className="fixed bottom-4 left-1/2 transform -translate-x-1/2 bg-red-600 text-white px-6 py-3 rounded-lg shadow-lg z-50 w-[90%] max-w-md flex flex-col sm:flex-row items-center sm:space-x-4 text-center sm:text-left">
+        <div className="text-sm font-semibold flex-1">
           <p>🚀 Don't miss our <span className="font-bold">Customer Experience Training</span> on <span className="underline">March 6th</span>!</p>
           <p className="mt-1">One-time offer: <span className="line-through opacity-75">10,000 KES</span> <span className="font-bold text-yellow-300">now 5,500 KES</span>! 🎉</p>
         </div>
         <Link to="/customer-experience-trainings">
-          <button className="bg-white text-red-600 px-4 py-2 rounded-lg text-sm font-semibold hover:bg-gray-100 transition">Register Now</button>
+          <button className="bg-white text-red-600 px-4 py-2 rounded-lg text-sm font-semibold hover:bg-gray-100 transition mt-2 sm:mt-0">Register Now</button>
         </Link>
       </div>
 
