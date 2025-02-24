@@ -40,7 +40,7 @@ const TrainingModal: React.FC<TrainingModalProps> = ({ training, isOpen, onClose
               Date: {format(new Date(training.date), "MMMM d, yyyy")}
             </p>
             <p className="text-sm text-gray-600">{training.description}</p>
-            <div className="flex justify-between text-sm text-gray-600">
+            <div className="flex justify-between text-sm text-gray-600 font-bold">
               <span>Limited Spots Available</span>
               <span>March Discount: KSH{training.cost}</span>
             </div>
