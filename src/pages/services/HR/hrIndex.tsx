@@ -62,8 +62,7 @@ const HrIndex = () => {
       <TrainingModal
         training={selectedTraining}
         isOpen={!!selectedTraining}
-        onClose={() => setSelectedTraining(null)}
-      />
+        onClose={() => setSelectedTraining(null)} registrationLink={''}      />
     </div>
   );
 };

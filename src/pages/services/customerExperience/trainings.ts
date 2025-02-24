@@ -2,27 +2,11 @@ import { Training } from "../../../type";
 
 export const trainings: Training[] = [
   {
-    date: '2025-02-15',
-    topic: 'Introduction to TypeScript',
+    date: '2025-03-6',
+    topic: 'CX101: DRIVING ORGANIZATIONAL SUCCESS THROUGH CUSTOMER EXPERIENCE',
     spotsAvailable: 10,
-    session: 'Introduction to TypeScript', 
-    cost: 199,
-    description: 'A comprehensive introduction to TypeScript fundamentals and best practices.'
+    session: 'CX101: DRIVING ORGANIZATIONAL SUCCESS THROUGH CUSTOMER EXPERIENCE', 
+    cost: 5500,
+    description: 'The purpose of this training workshop is to provide participants with a comprehensive customer experience (CX101 ) training program designed to elevate customer interactions, improve satisfaction, increase retention, and drive overall organizational success.'
   },
-  {
-    date: '2025-04-22',
-    topic: 'Advanced React Patterns',
-    spotsAvailable: 8,
-    session: 'Advanced React Patterns', 
-    cost: 299,
-    description: 'Deep dive into advanced React patterns and performance optimization.'
-  },
-  {
-    date: '2025-05-05',
-    topic: 'Modern CSS Techniques',
-    spotsAvailable: 12,
-    session: 'Modern CSS Techniques', 
-    cost: 149,
-    description: 'Learn modern CSS techniques including Grid, Flexbox, and animations.'
-  }
 ];

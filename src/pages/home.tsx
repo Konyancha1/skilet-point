@@ -149,6 +149,13 @@ const HomePage = () => {
         </div>
       </section>
 
+      <div className="fixed bottom-4 left-1/2 transform -translate-x-1/2 bg-red-600 text-white px-4 py-2 rounded-lg shadow-lg flex items-center space-x-3 z-1000">
+        <p className="text-sm font-semibold">🚀 Don't miss our Customer Experience Training on March 6th! </p>
+        <Link to="/customer-experience-trainings">
+          <button className="bg-white text-red-600 px-3 py-1 rounded-lg text-sm font-semibold hover:bg-gray-100 transition">Register Now</button>
+        </Link>
+      </div>
+
       {/* Footer */}
       <footer className="w-full py-6 text-center text-black flex flex-col items-center">
         <div className="flex justify-center space-x-4 mb-4 mt-2">
