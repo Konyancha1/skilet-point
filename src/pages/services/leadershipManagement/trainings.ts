@@ -2,27 +2,12 @@ import { Training } from "../../../type";
 
 export const trainings: Training[] = [
   {
-    date: '2025-02-15',
-    topic: 'Introduction to TypeScript',
-    spotsAvailable: 10,
-    session: 'Introduction to TypeScript', 
-    cost: 199,
-    description: 'A comprehensive introduction to TypeScript fundamentals and best practices.'
+    date: '2025-09-04',
+    topic: 'CX MASTERY FOR MANAGERS: DRIVING LOYALTY, RETENTION, AND TEAM EXCELLENCE',
+    spotsAvailable: 15,
+    session: 'CX Mastery for Managers',
+    cost: 22500,
+    description: 'This training masterclass is designed for managers ready to lead customer-focused teams. Gain practical tools to increase customer loyalty, reduce churn, boost referrals, and stand out as a growth-focused leader.',
+    registrationLink: 'https://forms.gle/VMZhrhxU2Yi5fLyT7'
   },
-  {
-    date: '2025-04-22',
-    topic: 'Advanced React Patterns',
-    spotsAvailable: 8,
-    session: 'Advanced React Patterns', 
-    cost: 299,
-    description: 'Deep dive into advanced React patterns and performance optimization.'
-  },
-  {
-    date: '2025-05-05',
-    topic: 'Modern CSS Techniques',
-    spotsAvailable: 12,
-    session: 'Modern CSS Techniques', 
-    cost: 149,
-    description: 'Learn modern CSS techniques including Grid, Flexbox, and animations.'
-  }
 ];

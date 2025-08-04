@@ -1,8 +1,9 @@
 export interface Training {
   date: string;
   topic: string;
-  spotsAvailable: number;
-  cost: number;
+  session: string;
   description: string;
-  session?: string;
+  cost: number;
+  spotsAvailable: number;
+  registrationLink?: string;
 }
