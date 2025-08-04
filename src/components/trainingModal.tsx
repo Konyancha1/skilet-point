@@ -48,7 +48,7 @@ const TrainingModal: React.FC<TrainingModalProps> = ({
             </div>
           </div>
 
-          {training.registrationLink && (
+          {training?.registrationLink && (
             <div className="text-center">
               <Button
                 asChild
