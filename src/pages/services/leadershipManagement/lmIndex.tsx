@@ -66,11 +66,11 @@ const LeadershipManagementIndex = () => {
         </div>
       </div>
 
-      {/* Training Modal */}
       <TrainingModal
         training={selectedTraining}
         isOpen={!!selectedTraining}
-        onClose={() => setSelectedTraining(null)} registrationLink={''}      />
+        onClose={() => setSelectedTraining(null)}
+      />
     </div>
   );
 };

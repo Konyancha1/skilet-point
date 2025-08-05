@@ -60,11 +60,11 @@ const JohnMaxwellTrainings = () => {
         </div>
       </div>
 
-      {/* Training Details Modal */}
       <TrainingModal
         training={selectedTraining}
         isOpen={!!selectedTraining}
-        onClose={() => setSelectedTraining(null)} registrationLink={''}      />
+        onClose={() => setSelectedTraining(null)}
+      />
     </div>
   );
 };

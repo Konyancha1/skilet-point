@@ -64,7 +64,8 @@ const Index = () => {
       <TrainingModal
         training={selectedTraining}
         isOpen={!!selectedTraining}
-        onClose={() => setSelectedTraining(null)} registrationLink={''}      />
+        onClose={() => setSelectedTraining(null)}
+      />
     </div>
   );
 };
